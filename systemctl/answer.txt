@@ -1,0 +1,26 @@
+# mephi.service
+[Unit]
+Description=MEPhI hello service
+After=sshd.service
+[Service]
+ExecStart=/usr/bin/printf "Hello, MephI"
+[Install]
+WantedBy=multi-user.target
+# mephi.path
+[Unit]
+Description="CHeck for MEPHI file in /tmp"
+After=sshd.service
+[Path]
+PathExists=/tmp/mephi.file
+Unit=mephi.service
+[Install]
+WantedBy=multi-user.target
+#-----------------------------------------------------
+-- Logs begin at Wed 2021-03-24 19:07:04 MSK. --
+мая 24 19:50:38 rita systemd[1]: Started MEPhI hello service.
+мая 24 19:50:38 rita printf[31739]: Hello, MEPhI!
+мая 24 19:50:38 rita systemd[1]: mephi.service: Succeeded.
+мая 24 19:53:07 rita systemd[1]: Started MEPhI hello service.
+мая 24 19:53:07 rita printf[32022]: Hello, MEPhI!
+мая 24 19:53:07 rita systemd[1]: mephi.service: Succeeded.
+
